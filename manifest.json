@@ -4,7 +4,8 @@
     "description": "Undermining Language Detector",
     "version": "1.0",
 	"browser_action": {
-      "default_icon": "icon.png"
+      "default_icon": "icon.png",
+      "default_popup": "popup.html"
     },
     "content_scripts": [
         {
@@ -12,7 +13,7 @@
                 "*://*/*"
             ],
             "js": [
-                "content.js"
+                "./lib/jquery-3.3.1.min.js","content.js"
             ],
             "run_at": "document_end"
         }

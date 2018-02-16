@@ -1,6 +1,7 @@
 #popupMessage {
-  		font-family: sans-serif;
-  		font-size: 14px;
+/*      font-family: 'PT Serif', serif;*/
+      font-family: 'Open Sans', sans-serif;  	
+      font-size: 14px;
   		height:250px;
   		padding: 10px;
   		min-width: 400px;
@@ -24,3 +25,7 @@
 		height: 50px;
 		padding-bottom: 20px;
 	}
+  h2{
+    font-family: 'Grand Hotel', cursive;
+    font-size: 50px;
+  }

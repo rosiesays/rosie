@@ -7,7 +7,6 @@ keywordMatching = () => {
     if(keywordMatches !== null) {
         keywordMatches.forEach((matchedWord) => {
             $("#popupMessage").html(function(_, html) {
-                console.log(WORDS.words[keywords.indexOf(matchedWord)].message);
                 //Changes the CSS class if the keyword is bad
                 let warningMessage = WORDS.words[keywords.indexOf(matchedWord)].message;
                 let id = "warningId"+count;
@@ -22,7 +21,6 @@ keywordMatching = () => {
 
 registerKeywordListeners = (keyReplacements) => {
     for(var x = 0; x<keyReplacements.length; x++){
-        console.log("Listening?" + x);
         document.getElementById("warningId"+x).addEventListener("dblclick", function(){
             this.innerHTML=keyReplacements[parseInt(this.id.replace("warningId", ""))];
             this.classList.remove("warning");
@@ -40,7 +38,6 @@ AcceptAllChanges = () => {
     var matches = getKeywordMatches(keywords);
     var replacements = keyReplacements;
     for(var x = 0;x<replacements.length; x++){
-        console.log(x);
         var element = document.getElementById("warningId"+x)
         element.innerHTML=replacements[parseInt(element.id.replace("warningId", ""))];
         element.classList.remove("warning"); 
@@ -49,7 +46,6 @@ AcceptAllChanges = () => {
 
 getKeywordMatches = (keywords)=>{
     var inputString = $("#popupMessage").html().toString();
-    //Creates new array with just the keywords
     //Creates reguar expression that matches the json keywords
     var keywordMatcher = new RegExp(keywords.join("|"), "g");
     var keywordMatches = inputString.match(keywordMatcher);

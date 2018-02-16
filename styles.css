@@ -1,0 +1,26 @@
+#popupMessage {
+  		font-family: sans-serif;
+  		font-size: 14px;
+  		height:250px;
+  		padding: 10px;
+  		min-width: 400px;
+  		max-width: 400px;
+  		min-height: 250px;
+  		overflow:hidden;
+	}
+	.full{
+		background-color: white;
+  		border-bottom: 10px solid #3f4d9c;
+  		border-top: 10px solid #3f4d9c;
+  		border-right: 10px solid #b22222;
+  		border-left: 10px solid #b22222;
+  		margin: 0;
+	}
+	.full .icon{
+		position: relative;
+		padding-left: 350px;
+		padding-top: 20px;
+		width: 50px;
+		height: 50px;
+		padding-bottom: 20px;
+	}

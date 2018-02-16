@@ -1,0 +1,12 @@
+.warning {
+    background-color: yellow;
+    color: purple;
+    border-bottom: 1px;
+    border-bottom-style: dotted;
+    border-bottom-color: red;
+}
+
+.stripText {
+    background-color: transparent;
+    color: black;
+}

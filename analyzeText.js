@@ -21,6 +21,7 @@ keywordMatching = () => {
 
 registerKeywordListeners = (keyReplacements) => {
     for(var x = 0; x<keyReplacements.length; x++){
+        document.getElementById("warningId"+x).addEventListener("dblclick", trackAcceptChange);
         document.getElementById("warningId"+x).addEventListener("dblclick", function(){
             this.innerHTML=keyReplacements[parseInt(this.id.replace("warningId", ""))];
             this.classList.remove("warning");

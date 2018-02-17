@@ -6,24 +6,3 @@ chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
     //copyToClipboard();
     });
 });
-
-// function copyToClipboard() {
-//     var clipboard = new Clipboard('#copyButton');
-//     console.log("Are you even being called lol");
-//     clipboard.on('success', function(e) {
-//         console.log("This worked");
-//     });
-//     clipboard.on('error', function(e) {
-//         console.log("This did not work");
-//     });
-// }
-
-// //Not currently functional at all
-// function stripText() {
-//     document.addEventListener('DOMContentLoaded', function() {
-//         var link = document.getElementById("#copyButton");
-//         link.addEventListener('click', function() {
-//             $(span).removeClass("warning");
-//         });
-//     });
-// }

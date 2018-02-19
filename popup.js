@@ -3,6 +3,11 @@ chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
     $("#popupMessage").html(response.messageText);
     var replacements = keywordMatching();
     registerKeywordListeners(replacements);
-    //copyToClipboard();
+	
+	new Clipboard('#copyBtn', {
+		text: function(trigger){
+			return prepareForCopy($("#popupMessage").html().toString());
+		}
+	});
     });
 });

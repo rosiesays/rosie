@@ -34,6 +34,12 @@ function removeCode(str){
     return str.replace(/<[^>]*>/g, "");
 }
 
+function prepareForCopy(str){
+	var removeNewLines = str.replace(/\r?\n|\r/g, "");
+	var addCorrectLineBreaks = removeNewLines.replace(/<p><\/p>/g, "").replace(/<\/p>/g, "\n");
+	return removeCode(addCorrectLineBreaks);
+}
+
 AcceptAllChanges = () => {    
     var keywords = WORDS.words.map((word) => word.keyword);
     var matches = getKeywordMatches(keywords);

@@ -37,10 +37,11 @@ function removeCode(str){
 function prepareForCopy(str){	
 	var removeNewLines = str.replace(/\r?\n|\r/g, "");
 	var removeDivDiv = removeNewLines.replace(/<div><div>/g, "\n");
-	var removeDiv = removeDivDiv.replace(/<div><\/div>/g, "").replace(/<div>/g, "\n");
+	var removeDiv = removeDivDiv.replace(/<div><\/div>/, "").replace(/<div>/g, "\n");
 	var removeP = removeDiv.replace(/<p><\/p>/g, "").replace(/<\/p>/g, "\n");
 	var removeBr = removeP.replace(/<br>/g, "\n");
-	var removeFbSpan = removeBr.replace(/<span data-text="true">/, "").replace(/<span data-text="true">/g, "\n");
+	var removeFbSpan = removeBr.replace(/<span data-text="true">/, "");
+	removeFbSpan = removeFbSpan.replace(/<span data-text="true">/g, "\n");
 	return removeCode(removeFbSpan).replace(/&nbsp;/g, "");
 }
 

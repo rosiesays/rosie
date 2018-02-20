@@ -37,7 +37,7 @@ function removeCode(str){
 function prepareForCopy(str){
 	var removeNewLines = str.replace(/\r?\n|\r/g, "");
 	var addCorrectLineBreaks = removeNewLines.replace(/<p><\/p>/g, "").replace(/<\/p>/g, "\n");
-	return removeCode(addCorrectLineBreaks);
+	return removeCode(addCorrectLineBreaks).replace(/&nbsp/g, "");
 }
 
 AcceptAllChanges = () => {    

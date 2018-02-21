@@ -10,7 +10,7 @@ keywordMatching = () => {
                 //Changes the CSS class if the keyword is bad
                 let warningMessage = WORDS.words[keywords.indexOf(matchedWord)].message;
                 let id = "warningId"+count;
-                let returnValue = html.replace(new RegExp("\\b"+matchedWord+"(?!<)\\b", "i"), ` <span id= "${id}" class="warning" title="${removeCode(warningMessage)}">${removeCode(matchedWord)}</span>`);
+                let returnValue = html.replace(new RegExp("\\b"+matchedWord+"(?!<)\\b", "i"), `<span id= "${id}" class="warning">${removeCode(matchedWord)}</span>`);
                 count++;
                 return returnValue;
             });
@@ -21,10 +21,15 @@ keywordMatching = () => {
 
 registerKeywordListeners = (keyReplacements) => {
     for(var x = 0; x<keyReplacements.length; x++){
+        let kw = WORDS.words.map((word) => word.keyword);
+        let km = getKeywordMatches(kw);
+        let tooltip = WORDS.words[kw.indexOf(km[x])].message;
+        $("#warningId"+x).attr('title', tooltip);
         document.getElementById("warningId"+x).addEventListener("dblclick", trackAcceptChange);
         document.getElementById("warningId"+x).addEventListener("dblclick", function(){
             this.innerHTML=keyReplacements[parseInt(this.id.replace("warningId", ""))];
             this.classList.remove("warning");
+            this.removeAttribute("title");
         });
     }
     document.getElementById("allChange").addEventListener("click", AcceptAllChanges);
@@ -52,7 +57,8 @@ AcceptAllChanges = () => {
     for(var x = 0;x<replacements.length; x++){
         var element = document.getElementById("warningId"+x)
         element.innerHTML=replacements[parseInt(element.id.replace("warningId", ""))];
-        element.classList.remove("warning"); 
+        element.classList.remove("warning");
+        element.removeAttribute("title"); 
     }
 }
 

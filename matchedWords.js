@@ -2,7 +2,7 @@ var WORDS = {
     words: [
         {
             keyword: "just",
-            message: "Don't say that",
+            message: "Don't say just",
             replacement: ""
         },
         {

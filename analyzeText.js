@@ -10,7 +10,7 @@ keywordMatching = () => {
                 //Changes the CSS class if the keyword is bad
                 let warningMessage = WORDS.words[keywords.indexOf(matchedWord)].message;
                 let id = "warningId"+count;
-                let returnValue = html.replace(new RegExp("[^>]"+matchedWord), ` <span id= "${id}" class="warning" title="${removeCode(warningMessage)}">${removeCode(matchedWord)}</span>`);
+                let returnValue = html.replace(new RegExp("\\b"+matchedWord+"(?!<)\\b", "i"), ` <span id= "${id}" class="warning" title="${removeCode(warningMessage)}">${removeCode(matchedWord)}</span>`);
                 count++;
                 return returnValue;
             });
@@ -59,8 +59,11 @@ AcceptAllChanges = () => {
 getKeywordMatches = (keywords)=>{
     var inputString = $("#popupMessage").html().toString();
     //Creates reguar expression that matches the json keywords
-    var keywordMatcher = new RegExp(keywords.join("|"), "g");
+    // var keywordMatcher = new RegExp(keywords.join("|"), "g");
+    var keywordMatcher = new RegExp(`(\\b${keywords.join("\\b)|(\\b")}\\b)`, "gi");
+    console.log(keywordMatcher);
     var keywordMatches = inputString.match(keywordMatcher);
+    console.log(keywordMatches);
     return keywordMatches;
 }
 

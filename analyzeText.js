@@ -10,7 +10,7 @@ keywordMatching = () => {
                 //Changes the CSS class if the keyword is bad
                 let warningMessage = WORDS.words[keywords.indexOf(matchedWord)].message;
                 let id = "warningId"+count;
-                let returnValue = html.replace(new RegExp("[^>]"+matchedWord), ` <span id= "${id}" class="warning" title="${removeCode(warningMessage)}">${removeCode(matchedWord)}</span> `);
+                let returnValue = html.replace(new RegExp("[^>]"+matchedWord), ` <span id= "${id}" class="warning" title="${removeCode(warningMessage)}">${removeCode(matchedWord)}</span>`);
                 count++;
                 return returnValue;
             });

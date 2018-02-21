@@ -10,7 +10,7 @@ keywordMatching = () => {
                 //Changes the CSS class if the keyword is bad
                 let warningMessage = WORDS.words[keywords.indexOf(matchedWord)].message;
                 let id = "warningId"+count;
-                let returnValue = html.replace(new RegExp("[^>]"+matchedWord), ` <span id= "${id}" class="warning" title="${removeCode(warningMessage)}">${removeCode(matchedWord)}</span> `);
+                let returnValue = html.replace(new RegExp("[^>]"+matchedWord), ` <span id= "${id}" class="warning" title="${removeCode(warningMessage)}">${removeCode(matchedWord)}</span>`);
                 count++;
                 return returnValue;
             });
@@ -32,6 +32,17 @@ registerKeywordListeners = (keyReplacements) => {
 
 function removeCode(str){
     return str.replace(/<[^>]*>/g, "");
+}
+
+function prepareForCopy(str){	
+	var removeNewLines = str.replace(/\r?\n|\r/g, "");
+	var removeDivDiv = removeNewLines.replace(/<div><div>/g, "\n");
+	var removeDiv = removeDivDiv.replace(/<div><\/div>/, "").replace(/<div>/g, "\n");
+	var removeP = removeDiv.replace(/<p><\/p>/g, "").replace(/<\/p>/g, "\n");
+	var removeBr = removeP.replace(/<br>/g, "\n");
+	var removeFbSpan = removeBr.replace(/<span data-text="true">/, "");
+	removeFbSpan = removeFbSpan.replace(/<span data-text="true">/g, "\n");
+	return removeCode(removeFbSpan).replace(/&nbsp;/g, "");
 }
 
 AcceptAllChanges = () => {    

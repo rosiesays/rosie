@@ -8,9 +8,9 @@ keywordMatching = () => {
         keywordMatches.forEach((matchedWord) => {
             $("#popupMessage").html(function(_, html) {
                 //Changes the CSS class if the keyword is bad
-                let warningMessage = WORDS.words[keywords.indexOf(matchedWord)].message;
+                let warningMessage = WORDS.words[keywords.indexOf(matchedWord.toLowerCase())].message;
                 let id = "warningId"+count;
-                let returnValue = html.replace(new RegExp("\\b"+matchedWord+"(?!<)\\b", "i"), `<span id= "${id}" class="warning">${removeCode(matchedWord)}</span>`);
+                let returnValue = html.replace(new RegExp("\\b"+matchedWord+"(?!</span>)\\b", "i"), `<span id= "${id}" class="warning">${removeCode(matchedWord)}</span>`);
                 count++;
                 return returnValue;
             });
@@ -23,7 +23,7 @@ registerKeywordListeners = (keyReplacements) => {
     for(var x = 0; x<keyReplacements.length; x++){
         let kw = WORDS.words.map((word) => word.keyword);
         let km = getKeywordMatches(kw);
-        let tooltip = WORDS.words[kw.indexOf(km[x])].message;
+        let tooltip = WORDS.words[kw.indexOf(km[x].toLowerCase())].message;
         $("#warningId"+x).attr('title', tooltip);
         document.getElementById("warningId"+x).addEventListener("dblclick", trackAcceptChange);
         document.getElementById("warningId"+x).addEventListener("dblclick", function(){
@@ -74,5 +74,5 @@ getKeywordMatches = (keywords)=>{
 }
 
 getKeyReplacements = (keywordMatches, keywords)=>{
-    return keywordMatches.map((word)=>WORDS.words[keywords.indexOf(word)].replacement);
+    return keywordMatches.map((word)=>WORDS.words[keywords.indexOf(word.toLowerCase())].replacement);
 }

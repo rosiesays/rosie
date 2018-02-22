@@ -64,12 +64,12 @@ AcceptAllChanges = () => {
 
 getKeywordMatches = (keywords)=>{
     var inputString = $("#popupMessage").html().toString();
-    //Creates reguar expression that matches the json keywords
-    // var keywordMatcher = new RegExp(keywords.join("|"), "g");
+    //Creates regular expression that matches the json keywords
     var keywordMatcher = new RegExp(`(\\b${keywords.join("\\b)|(\\b")}\\b)`, "gi");
-    console.log(keywordMatcher);
     var keywordMatches = inputString.match(keywordMatcher);
-    console.log(keywordMatches);
+	if(keywordMatches == null){
+		return [];
+	}
     return keywordMatches;
 }
 

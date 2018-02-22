@@ -7,9 +7,8 @@ keywordMatching = () => {
     if(keywordMatches !== null) {
         keywordMatches.forEach((matchedWord) => {
             $("#popupMessage").html(function(_, html) {
-                //Changes the CSS class if the keyword is bad
-                let warningMessage = WORDS.words[keywords.indexOf(matchedWord.toLowerCase())].message;
-                let id = "warningId"+count;
+                //Adds the warning css class to all instances of a keyword
+                let id = "warningId" + count;
                 let returnValue = html.replace(new RegExp("\\b"+matchedWord+"(?!</span>)\\b", "i"), `<span id= "${id}" class="warning">${removeCode(matchedWord)}</span>`);
                 count++;
                 return returnValue;
@@ -39,10 +38,13 @@ function prepareForCopy(str){
 	return removeBeginningWhiteSpace(formatLineBreaks(str, "\n"));
 }
 
-function prepareForDisplay(str, lineBreak, exclusions){
-	return removeBeginningBr(formatLineBreaks(str, lineBreak, exclusions));
+function prepareForDisplay(str){
+return removeBeginningBr(formatLineBreaks(str, "<br>", ["br"]));
 }
 
+/**
+* Replaces html with the proper line break encoding in the proper spots
+*/
 function formatLineBreaks(str, lineBreak, exclusions){
 	var removeNewLines = str.replace(/\r?\n|\r/g, "");
 	var removeDivDiv = removeNewLines.replace(/<div><div>/g, lineBreak);
@@ -60,6 +62,10 @@ function removeBeginningWhiteSpace(str){
 	return str.replace(/^\s/, "");
 }
 
+/**
+* Removes any HTML code by replacing anything between a '<' and a '>' (and the brackets themselves) with an empty string. 
+* Doesn't remove tags specified to be excluded in exclusions
+*/
 function removeCode(str, exclusions){
 	if(exclusions == null){
 		return str.replace(/<[^>]*>/g, "");
@@ -72,7 +78,7 @@ AcceptAllChanges = () => {
     var keywords = WORDS.words.map((word) => word.keyword);
     var matches = getKeywordMatches(keywords);
     var replacements = keyReplacements;
-    for(var x = 0;x<replacements.length; x++){
+    for(var x = 0; x < replacements.length; x++){
         var element = document.getElementById("warningId"+x)
         element.innerHTML=replacements[parseInt(element.id.replace("warningId", ""))];
         element.classList.remove("warning");

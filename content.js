@@ -3,11 +3,6 @@ chrome.runtime.onMessage.addListener(
 		if($(document.activeElement).attr("contenteditable")){
 			sendResponse({messageText: $(document.activeElement).html()});
 		} else{
-			sendResponse({messageText: "Please click into an input field"});
+			sendResponse({messageText: "To use Rosie, click into an input field, and then click on Rosie to get suggestions for your writing."});
 		}
-		
-        
 });
-
-
-

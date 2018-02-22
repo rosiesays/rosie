@@ -53,7 +53,7 @@ function formatLineBreaks(str, lineBreak, exclusions){
 }
 
 function removeBeginningBr(str){
-	return str .replace(/^(<br>)*/, "");
+	return str.replace(/^(<br>)*/, "");
 }
 
 function removeBeginningWhiteSpace(str){

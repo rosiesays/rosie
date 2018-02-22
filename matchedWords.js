@@ -11,7 +11,7 @@ var WORDS = {
             replacement: "apologetic"
         },
         {
-            keyword: "I'm not sure",
+            keyword: "i'm not sure",
             message: "You are sure",
             replacement: "YASS"
         }

@@ -35,19 +35,37 @@ registerKeywordListeners = (keyReplacements) => {
     document.getElementById("allChange").addEventListener("click", AcceptAllChanges);
 }
 
-function removeCode(str){
-    return str.replace(/<[^>]*>/g, "");
+function prepareForCopy(str){
+	return removeBeginningWhiteSpace(formatLineBreaks(str, "\n"));
 }
 
-function prepareForCopy(str){	
+function prepareForDisplay(str, lineBreak, exclusions){
+	return removeBeginningBr(formatLineBreaks(str, lineBreak, exclusions));
+}
+
+function formatLineBreaks(str, lineBreak, exclusions){
 	var removeNewLines = str.replace(/\r?\n|\r/g, "");
-	var removeDivDiv = removeNewLines.replace(/<div><div>/g, "\n");
-	var removeDiv = removeDivDiv.replace(/<div><\/div>/, "").replace(/<div>/g, "\n");
-	var removeP = removeDiv.replace(/<p><\/p>/g, "").replace(/<\/p>/g, "\n");
-	var removeBr = removeP.replace(/<br>/g, "\n");
-	var removeFbSpan = removeBr.replace(/<span data-text="true">/, "");
-	removeFbSpan = removeFbSpan.replace(/<span data-text="true">/g, "\n");
-	return removeCode(removeFbSpan).replace(/&nbsp;/g, "");
+	var removeDivDiv = removeNewLines.replace(/<div><div>/g, lineBreak);
+	var removeDiv = removeDivDiv.replace(/<div><\/div>/g, "").replace(/<div>(<br>)?/g, lineBreak);
+	var removeP = removeDiv.replace(/<p><\/p>/g, "").replace(/<\/p>/g, lineBreak);
+	var removeBr = removeP.replace(/<br>/g, lineBreak);
+	return removeCode(removeBr, exclusions).replace(/&nbsp;/g, "");
+}
+
+function removeBeginningBr(str){
+	return str .replace(/^(<br>)*/, "");
+}
+
+function removeBeginningWhiteSpace(str){
+	return str.replace(/^\s/, "");
+}
+
+function removeCode(str, exclusions){
+	if(exclusions == null){
+		return str.replace(/<[^>]*>/g, "");
+	}
+	var pattern = "<(?!" + exclusions.join(")[^>]*>|<(?!") + ")[^>]*>";
+	return str.replace(new RegExp(pattern, "g"), "");
 }
 
 AcceptAllChanges = () => {    

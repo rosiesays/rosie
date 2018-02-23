@@ -1,5 +1,5 @@
 .warning {
-    background-color: yellow;
+    background-color: rgb(66, 232, 244, .4);
     color: purple;
     border-bottom: 1px;
     border-bottom-style: dotted;

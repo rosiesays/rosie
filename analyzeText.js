@@ -1,5 +1,8 @@
 var count = 0;
 var keyReplacements;
+var previousPercentage = 0;
+var updatedPercentage = 0;
+
 keywordMatching = () => {
     var keywords = WORDS.words.map((word) => word.keyword);
     var keywordMatches = getKeywordMatches(keywords);
@@ -29,6 +32,9 @@ registerKeywordListeners = (keyReplacements) => {
             this.innerHTML=keyReplacements[parseInt(this.id.replace("warningId", ""))];
             this.classList.remove("warning");
             this.removeAttribute("title");
+            previousPercentage = updatedPercentage;
+            updatedPercentage = getPercentages();
+            updateProgressBar(previousPercentage, updatedPercentage);
         });
     }
     document.getElementById("allChange").addEventListener("click", AcceptAllChanges);
@@ -84,6 +90,7 @@ AcceptAllChanges = () => {
         element.classList.remove("warning");
         element.removeAttribute("title"); 
     }
+    updateProgressBar(previousPercentage, 100);
 }
 
 getKeywordMatches = (keywords)=>{
@@ -99,4 +106,57 @@ getKeywordMatches = (keywords)=>{
 
 getKeyReplacements = (keywordMatches, keywords)=>{
     return keywordMatches.map((word)=>WORDS.words[keywords.indexOf(word.toLowerCase())].replacement);
+}
+
+initializeProgressBar = () => {
+    let initialAnalysis = getPercentages();
+    $("#myBar").css("dislay", "inline");
+    $("#myBar").css("width", `${initialAnalysis}%`);
+    $("#myBar").html(`${initialAnalysis}%`);
+    if(initialAnalysis <= 50) {
+        $("#myBar").css("background-color", "#b22222");
+    } else {
+        $("#myBar").css("background-color", "#2f88c4");
+    }
+    return initialAnalysis;
+}
+
+//Currently calculates percentages based on number of sentences that contain a keyword.
+//Only using this for proof of concept, want to show 100% when all changes are accepted.
+getPercentages = () => {
+    let input  = $("#popupMessage").html().toString();
+    input = removeCode(input);
+    let sentenceArr = input.match(/\S.*?\."?(?=\s|$)/g)
+    console.log(sentenceArr);
+    let keywordsToMatch = WORDS.words.map((word) => word.keyword);
+    let matcher = new RegExp(`(\\b${keywordsToMatch.join("\\b)|(\\b")}\\b)`, "gi");
+    let keywordSentenceCount = 0;
+    sentenceArr.forEach((sentence) => {
+        if(matcher.test(sentence)) {
+            keywordSentenceCount++;
+        }
+    });
+    let percent =  100 - (keywordSentenceCount/sentenceArr.length * 100);
+    return percent;
+}
+
+//Updates the progress bar based on calculation.
+updateProgressBar = (previous, updated) => {
+    let bar = document.getElementById("myBar");   
+    var width = previous;
+    var autoUpdater = setInterval(frame, 10);
+    function frame() {
+        if (width >= updated) {
+            clearInterval(autoUpdater);
+        } else {
+            if(width < 50) {
+                $("#myBar").css("background-color", "#b22222");
+            } else {
+                $("#myBar").css("background-color", "#2f88c4");
+            }
+            width++; 
+            $("#myBar").css("width", `${width}%`);
+            $("#myBar").html(`${width}%`);
+        }
+    }
 }

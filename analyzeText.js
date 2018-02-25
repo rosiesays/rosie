@@ -112,7 +112,11 @@ getKeyReplacements = (keywordMatches, keywords)=>{
 initializeProgressBar = () => {
     let initialAnalysis = getPercentages();
     $("#myBar").css("dislay", "inline");
-    $("#myBar").css("width", `${initialAnalysis}%`);
+    if(initialAnalysis !== 0) {
+        $("#myBar").css("width", `${initialAnalysis}%`);
+    } else {
+        $("#myBar").css("width", "100%");
+    }
     $("#myBar").html(`${initialAnalysis}%`);
     if(initialAnalysis <= 50) {
         $("#myBar").css("background-color", "#b22222");
@@ -127,16 +131,25 @@ initializeProgressBar = () => {
 getPercentages = () => {
     let input  = $("#popupMessage").html().toString();
     input = removeCode(input);
+    let percent = 0;
     let sentenceArr = input.match(/\S.*?\."?(?=\s|$)/g);
+    console.log(sentenceArr);
     let keywordsToMatch = WORDS.words.map((word) => word.keyword);
     let matcher = new RegExp(`(\\b${keywordsToMatch.join("\\b)|(\\b")}\\b)`, "gi");
     let keywordSentenceCount = 0;
-    sentenceArr.forEach((sentence) => {
-        if(matcher.test(sentence)) {
-            keywordSentenceCount++;
-        }
-    });
-    let percent =  100 - (keywordSentenceCount/sentenceArr.length * 100).toFixed(1);
+    if(sentenceArr !== null) {
+        sentenceArr.forEach((sentence) => {
+            if(matcher.test(sentence)) {
+                keywordSentenceCount++;
+            }
+        });
+        percent =  100 - (keywordSentenceCount/sentenceArr.length * 100).toFixed(1);
+    } else {
+        if(matcher.test(input)) {
+            keywordSentenceCount = 1;
+        } 
+        percent = 100 - (keywordSentenceCount * 100);
+    }
     return percent;
 }
 

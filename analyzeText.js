@@ -108,6 +108,7 @@ getKeyReplacements = (keywordMatches, keywords)=>{
     return keywordMatches.map((word)=>WORDS.words[keywords.indexOf(word.toLowerCase())].replacement);
 }
 
+//Displays progress bar with initial analysis of the confidence of the text.
 initializeProgressBar = () => {
     let initialAnalysis = getPercentages();
     $("#myBar").css("dislay", "inline");
@@ -115,19 +116,18 @@ initializeProgressBar = () => {
     $("#myBar").html(`${initialAnalysis}%`);
     if(initialAnalysis <= 50) {
         $("#myBar").css("background-color", "#b22222");
-    } else {
+    } 
+    else {
         $("#myBar").css("background-color", "#2f88c4");
     }
     return initialAnalysis;
 }
 
 //Currently calculates percentages based on number of sentences that contain a keyword.
-//Only using this for proof of concept, want to show 100% when all changes are accepted.
 getPercentages = () => {
     let input  = $("#popupMessage").html().toString();
     input = removeCode(input);
-    let sentenceArr = input.match(/\S.*?\."?(?=\s|$)/g)
-    console.log(sentenceArr);
+    let sentenceArr = input.match(/\S.*?\."?(?=\s|$)/g);
     let keywordsToMatch = WORDS.words.map((word) => word.keyword);
     let matcher = new RegExp(`(\\b${keywordsToMatch.join("\\b)|(\\b")}\\b)`, "gi");
     let keywordSentenceCount = 0;
@@ -136,11 +136,11 @@ getPercentages = () => {
             keywordSentenceCount++;
         }
     });
-    let percent =  100 - (keywordSentenceCount/sentenceArr.length * 100);
+    let percent =  100 - (keywordSentenceCount/sentenceArr.length * 100).toFixed(1);
     return percent;
 }
 
-//Updates the progress bar based on calculation.
+//Updates the progress bar based on percentage calculation.
 updateProgressBar = (previous, updated) => {
     let bar = document.getElementById("myBar");   
     var width = previous;
@@ -156,7 +156,11 @@ updateProgressBar = (previous, updated) => {
             }
             width++; 
             $("#myBar").css("width", `${width}%`);
-            $("#myBar").html(`${width}%`);
+            if(width >= 100) {
+                $("#myBar").html("100%");
+            } else {
+                $("#myBar").html(`${width}%`);
+            }
         }
     }
 }

@@ -11,6 +11,11 @@ var WORDS = {
             replacement: ""
         },
         {
+            keyword: "apologize",
+            message: "What are you sorry for? Double click to remove.",
+            replacement: ""
+        },
+        {
             keyword: "i'm not sure",
             message: "Are you sure you're not sure? Double click to remove.",
             replacement: ""
@@ -85,7 +90,110 @@ var WORDS = {
             message: "Do you really need to be asking for permission? Double click to remove.",
             replacement: ""
         },
-
-
+        {
+            keyword: "wondering",
+            message: "Wondering can appear shy or hedging! Double click to remove.",
+            replacement: ""
+        },
+        {
+            keyword: "forgive me",
+            message: "No need to ask for forgiveness! Double click to remove.",
+            replacement: ""
+        },
+        {
+            keyword: "i'm no expert",
+            message: "Says the expert! Don't sell yourself short. Double click to remove",
+            replacement: ""
+        },
+        {
+            keyword: "yes, but",
+            message: "This message may appear to be unconfident. Double click to remove.",
+            replacement: ""
+        },
+        {
+            keyword: "does that make sense",
+            message: "Asking for validation can seem unconfident! Double click to change to 'If this doesn't make sense, let me know.'",
+            replacement: "If this doesn't make sense, let me know"
+        },
+        {
+            keyword: "this might not work",
+            message: "But it might work! Don't sell yourself short. Double click to remove",
+            replacement: ""
+        },
+        {
+            keyword: "believe",
+            message: "Don't stop believing, but sometimes you don't just believe, you KNOW. Double click to change to 'know'",
+            replacement: "know"
+        },
+        {
+            keyword: "stupid question",
+            message: "There's no such thing as a stupid question. Questions are how we learn, don't be ashamed! Double click to remove.",
+            replacement: ""
+        },
+        {
+            keyword: "or whatever",
+            message: "You obviously care about this! Don't blow it off. Double click to remove.",
+            replacement: ""
+        },
+        {
+            keyword: ":\\)",
+            message: "We appreciate the joy, but sometimes being overly enthusiastic can come off as unprofessional. Save those emojis for your texts! Double click to remove.",
+            replacement: ""
+        },
+        {
+            keyword: "sort of",
+            message: "Using this phrase can cloud your meaning and make you sound unconfident! Double click to remove",
+            replacement: ""
+        },
+        {
+            keyword: "kind of",
+            message: "Using this phrase can cloud your meaning and make you sound unconfident! Double click to remove",
+            replacement: ""
+        },
+        {
+            keyword: "if you don't mind",
+            message: "Asking for validation can come off as unprofessional. Double click to remove",
+            replacement: ""
+        },
+        {
+            keyword: "if you dont mind",
+            message: "Asking for validation can come off as unprofessional. Double click to remove",
+            replacement: ""
+        },
+        {
+            keyword: "(\!\!\!)",
+            message: "Being overly enthusiastic can make your message sound too emotional. Double click to change to '!'",
+            replacement: "!"
+        },
+        {
+            keyword: "(\!\!\!\!)",
+            message: "Being overly enthusiastic can make your message sound too emotional. Double click to change to '!'",
+            replacement: "!"
+        },
+        {
+            keyword: "(\!\!\!\!\!)",
+            message: "Being overly enthusiastic can make your message sound too emotional. Double click to change to '!'",
+            replacement: "!"
+        },
+        {
+            keyword: "i might",
+            message: "Commit to your goals and be assertive! Double click to change to 'I will'.",
+            replacement: "I will"
+        },
+        {
+            keyword: "i could",
+            message: "Commit to your goals and be assertive! Double click to change to 'I will'.",
+            replacement: "I will"
+        },
+        {
+            keyword: "i plan to",
+            message: "Commit to your goals and be assertive! Double click to change to 'I will'.",
+            replacement: "I will"
+        },
+        {
+            keyword: "i should",
+            message: "Commit to your goals and be assertive! Double click to change to 'I will'.",
+            replacement: "I will"
+        },
     ],
 };

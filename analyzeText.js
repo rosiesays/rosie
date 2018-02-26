@@ -90,6 +90,7 @@ getKeywordMatches = (keywords)=>{
     var inputString = $("#popupMessage").html().toString();
     //Creates regular expression that matches the json keywords
     var keywordMatcher = new RegExp(`(\\b${keywords.join("\\b)|(\\b")}\\b)`, "gi");
+    console.log(keywordMatcher);
     var keywordMatches = inputString.match(keywordMatcher);
 	if(keywordMatches == null){
 		return [];

@@ -132,7 +132,7 @@ getPercentages = () => {
     let input  = $("#popupMessage").html().toString();
     input = removeCode(input);
     let percent = 0;
-    let sentenceArr = input.match(/\S.*?\."?(?=\s|$)/g);
+    let sentenceArr = input.match(/[^\.!\?]+[\.!\?]+/g);
     console.log(sentenceArr);
     let keywordsToMatch = WORDS.words.map((word) => word.keyword);
     let matcher = new RegExp(`(\\b${keywordsToMatch.join("\\b)|(\\b")}\\b)`, "gi");

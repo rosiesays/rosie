@@ -4,6 +4,11 @@ chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
     var replacements = keywordMatching();
     registerKeywordListeners(replacements);
 	
+	if(!response.showButtons){
+		$("#allChange").hide();
+		$("#copyBtn").hide();
+	}
+	
 	new Clipboard('#copyBtn', {
 		text: function(trigger){
 			return prepareForCopy($("#popupMessage").html().toString());

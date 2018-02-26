@@ -19,7 +19,8 @@
 				"*groupme*",
 				"*linkedin*",
 				"*slack*",
-				"*yahoo*"
+				"*mail.yahoo*",
+				"*inbox.google*"
 			],
             "js": [
                 "./lib/jquery-3.3.1.min.js","content.js"

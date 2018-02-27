@@ -9,7 +9,7 @@ keywordMatching = () => {
             $("#popupMessage").html(function(_, html) {
                 //Adds the warning css class to all instances of a keyword
                 let id = "warningId" + count;
-                let returnValue = html.replace(new RegExp("\\b"+matchedWord+"(?!</span>)\\b", "i"), `<span id= "${id}" class="warning">${removeCode(matchedWord)}</span>`);
+                let returnValue = html.replace(new RegExp("\\b"+matchedWord+"(?!</span>)\\b", "i"), `<span id= "${id}" contenteditable="false" class="warning">${removeCode(matchedWord)}</span>`);
                 count++;
                 return returnValue;
             });

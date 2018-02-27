@@ -1,5 +1,6 @@
 <html>
     <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Grand+Hotel|Open+Sans" rel="stylesheet">
   <script src="./lib/clipboard.min.js"></script>
   <script src="./lib/jquery-3.3.1.min.js"></script>
@@ -8,7 +9,9 @@
     <script src="./analyzeText.js"></script>
     <script src="./popup.js"></script>
     <h2> Rosie Says... </h2>
-    <p class="instruction"><b>Hover over words for suggestions, double click to accept the changes you like (or accept them all!) and then copy and paste them back into your message box!</b></p>
+    <p class="instruction"><b>Hover over words for suggestions, double click to accept the changes you like (or accept them all!) and then copy and paste them back into your message box! </b>
+        <i id="question" class="fa fa-question-circle" style="font-size:14px" title="To use Rosie: &#013; 1) Type your message in one of our supported websites &#013; 2) Click on the 'Rosie' icon in your browser &#013; 3) Hover over underlined words to see Rosie's suggestions &#013; 4) Double click an underlined word or phrase to accept Rosie's changes (Or click the 'Accept All Changes' button to accept them all!) &#013; 5) Use the 'Copy to Clipboard' button to copy all the text in the Rosie window (Rosie will remove any remaining underlines in the clipboard for you!) &#013; 6) Paste your stronger, more confident message and remember: You can do it!"></i>
+    </p>
   <body class="full">
         <div contenteditable="true" id="popupMessage"></div>
       <button class="btn" id="allChange">Accept All Changes</button>

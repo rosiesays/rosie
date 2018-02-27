@@ -48,7 +48,7 @@
   .warning {
     border-bottom: 2px;
     border-bottom-style: dashed;
-    border-bottom-color: red;
+    border-bottom-color: #3f4d9c;
   }
   .btn{
     margin-left:30px;

@@ -51,7 +51,7 @@ function formatLineBreaks(str, lineBreak, exclusions){
 	var removeDiv = removeDivDiv.replace(/<div><\/div>/g, "").replace(/<div>(<br>)?/g, lineBreak);
 	var removeP = removeDiv.replace(/<p><\/p>/g, "").replace(/<\/p>/g, lineBreak);
 	var removeBr = removeP.replace(/<br>/g, lineBreak);
-	return removeCode(removeBr, exclusions).replace(/&nbsp;/g, "");
+	return removeCode(removeBr, exclusions).replace(/&nbsp;/g, " ");
 }
 
 function removeBeginningBr(str){

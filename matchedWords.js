@@ -136,11 +136,6 @@ var WORDS = {
             replacement: ""
         },
         {
-            keyword: ":\\)",
-            message: "We appreciate the joy, but sometimes being overly enthusiastic can come off as unprofessional. Save those emojis for your texts! Double click to remove.",
-            replacement: ""
-        },
-        {
             keyword: "sort of",
             message: "Using this phrase can cloud your meaning and make you sound unconfident! Double click to remove",
             replacement: ""
@@ -159,21 +154,6 @@ var WORDS = {
             keyword: "if you dont mind",
             message: "Asking for validation can come off as unprofessional. Double click to remove",
             replacement: ""
-        },
-        {
-            keyword: "(\!\!\!)",
-            message: "Being overly enthusiastic can make your message sound too emotional. Double click to change to '!'",
-            replacement: "!"
-        },
-        {
-            keyword: "(\!\!\!\!)",
-            message: "Being overly enthusiastic can make your message sound too emotional. Double click to change to '!'",
-            replacement: "!"
-        },
-        {
-            keyword: "(\!\!\!\!\!)",
-            message: "Being overly enthusiastic can make your message sound too emotional. Double click to change to '!'",
-            replacement: "!"
         },
         {
             keyword: "i might",

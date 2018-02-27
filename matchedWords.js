@@ -195,5 +195,35 @@ var WORDS = {
             message: "Commit to your goals and be assertive! Double click to change to 'I will'.",
             replacement: "I will"
         },
+		{ 
+			keyword: "i think", 
+			message: "I think undermines your self-confidence. Double click to remove.", 
+			replacement: ""
+		},
+		{ 
+			keyword: "we think", 
+			message: "We think undermines your self-confidence. Double click to remove.",
+			replacement: ""
+		},
+		{ 
+			keyword: "try", 
+			message: "What you try you will accomplish! Double click to remove.", 
+			replacement: ""
+		},
+		{ 
+			keyword: "if you want", 
+			message: "Be confident when asking for something, it will make your message so much stronger. Double click to remove.", 
+			replacement: ""
+		},
+		{ 
+			keyword: "if you are alright with that", 
+			message: "Be confident when asking for something, it will make your message so much stronger. Double click to remove.", 
+			replacement: ""
+		},
+		{ 
+			keyword: "i guess", 
+			message: "Confidence in your abilities is key: you don't guess, you know! Double click to remove.", 
+			replacement: ""
+		}
     ],
 };

@@ -1,86 +1,101 @@
 #popupMessage {
-	font-family: 'Open Sans', sans-serif;  	
-	font-size: 14px;
-	height:350px;
-	padding: 10px;
-	min-width: 500px;
-	max-width: 500px;
-	min-height: 350px;
-	overflow:auto;
-	outline: 0px solid transparent;
-}
-.full{
-	background-color: white;
-	border-bottom: 10px solid #3f4d9c;
-	border-top: 10px solid #3f4d9c;
-	border-right: 10px solid #b22222;
-	border-left: 10px solid #b22222;
-	margin: 0;
-}
-.full .icon{
-	position: relative;
-	left: 35px;
-	top: 115px;
-	width: 50px;
-	height: 50px;
-	bottom: 20px;
-}
-h2{
-  font-family: 'Grand Hotel', cursive;
-  font-size: 50px;
+    font-family: 'Open Sans', sans-serif;   
+    font-size: 14px;
+    height:350px;
+    padding: 10px;
+    min-width: 500px;
+    max-width: 500px;
+    min-height: 350px;
+    overflow:auto;
+    outline: 0px solid transparent;
+  }
+  .full{
+    background-color: white;
+      border-bottom: 10px solid #3f4d9c;
+      border-top: 10px solid #3f4d9c;
+      border-right: 10px solid #b22222;
+      border-left: 10px solid #b22222;
+      margin: 0;
+  }
+  .full .icon{
+    position: relative;
+    left: 150px;
+    top: 10px;
+    width: 50px;
+    height: 50px;
+    bottom: 20px;
+    padding-top: 5px;
+  }
+  h2{
+    font-family: 'Grand Hotel', cursive;
+    font-size: 50px;
+    text-align: center;
+    color: #b22222;
+    -webkit-margin-after: 0.1em;
+    -webkit-margin-before: 0.1em;
+  }
+
+.progressBar {
+  font-family: 'Open Sans', sans-serif; 
+  height: 2%;
+  width: 100%;
   text-align: center;
-  color: #b22222;
-  -webkit-margin-after: 0.1em;
-  -webkit-margin-before: 0.1em;
-}
-.warning {
-  border-bottom: 2px;
-  border-bottom-style: dashed;
-  border-bottom-color: red;
-}
-.btn{
-  margin-left:30px;
-  position:relative;
-  top: 85px;
-  background-color: #b22222; /* Green */
-  border: none;
+  font-size: 9px;
   color: white;
-  padding: 10px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 12px;
-  border-radius: 10px;
-  font-weight: bold;
-  font-family: 'Open Sans', sans-serif;
+  background-color: transparent;
+  border-radius: 25px;
 }
-.btn:hover{
-  background-color: #720000;
-  cursor: pointer;
-}
-p{
-  position: relative;
-  top: -25px;
-  margin-left: 30px;
-  margin-right: 30px;
-  font-family: 'Open Sans', sans-serif;   
-  font-size: 12px;
-}
-
-/*Scrollbar */
-
-/* width */
-::-webkit-scrollbar {
-    width: 8px;
-}
- 
-/* Handle */
-::-webkit-scrollbar-thumb {
-    background: #2f88c4; 
+  .warning {
+    border-bottom: 2px;
+    border-bottom-style: dashed;
+    border-bottom-color: red;
+  }
+  .btn{
+    margin-left:30px;
+    left: 70px;
+    position:relative;
+    top: -10px;
+    background-color: #b22222; /* Green */
+    border: none;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
     border-radius: 10px;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-    background: #3f4d9c; 
+    font-weight: bold;
+    font-family: 'Open Sans', sans-serif;
+  }
+  .btn:hover{
+    background-color: #720000;
+    cursor: pointer;
+  }
+  p{
+    color: #3f4d9c;
+    position: relative;
+    top: -10px;
+    text-align: center;
+    margin-left: 30px;
+    margin-right: 30px;
+    font-family: 'Open Sans', sans-serif;   
+    font-size: 12px;
+  }
+  
+  /*Scrollbar */
+  
+  /* width */
+  ::-webkit-scrollbar {
+      width: 8px;
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+      background: #2f88c4; 
+      border-radius: 10px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+      background: #3f4d9c; 
 }

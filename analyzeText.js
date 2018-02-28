@@ -1,8 +1,9 @@
 var count = 0;
 var keyReplacements;
+var keywordMatches;
 keywordMatching = () => {
     var keywords = WORDS.words.map((word) => word.keyword);
-    var keywordMatches = getKeywordMatches(keywords);
+    keywordMatches = getKeywordMatches(keywords);
     keyReplacements = getKeyReplacements(keywordMatches,keywords);
     if(keywordMatches !== null) {
         keywordMatches.forEach((matchedWord) => {
@@ -21,7 +22,7 @@ keywordMatching = () => {
 registerKeywordListeners = (keyReplacements) => {
     for(var x = 0; x<keyReplacements.length; x++){
         let kw = WORDS.words.map((word) => word.keyword);
-        let km = getKeywordMatches(kw);
+        let km = keywordMatches;
         let tooltip = WORDS.words[kw.indexOf(km[x].toLowerCase())].message;
         $("#warningId"+x).attr('title', tooltip);
         document.getElementById("warningId"+x).addEventListener("dblclick", trackAcceptChange);
